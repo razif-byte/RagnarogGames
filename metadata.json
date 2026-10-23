@@ -1,0 +1,6 @@
+{
+  "name": "Ragnarok: Chronicles of Midgarts 3D",
+  "description": "3D animated Ragnarok-inspired MMORPG with classic turn-based combat, open-world exploration, custom builds, guild raids, player economy & trading, and cross-platform cloud sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
