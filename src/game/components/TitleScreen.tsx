@@ -7,12 +7,14 @@ interface TitleScreenProps {
   selectedJob: JobClass;
   onSelectJob: (job: JobClass) => void;
   onStartGame: () => void;
+  onOpenAudio?: () => void;
 }
 
 export const TitleScreen: React.FC<TitleScreenProps> = ({
   selectedJob,
   onSelectJob,
   onStartGame,
+  onOpenAudio,
 }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -145,6 +147,20 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
           <span className="text-[11px] text-slate-400 tracking-wider mt-2.5">
             Press [Space] or [Enter] to Start
           </span>
+
+          {onOpenAudio && (
+            <button
+              type="button"
+              onClick={() => {
+                sound.playClick();
+                onOpenAudio();
+              }}
+              className="mt-3 px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 text-xs font-semibold text-amber-300 flex items-center gap-1.5 transition-all cursor-pointer"
+            >
+              <span>🎵 BGM: {sound.getTrackInfo().title}</span>
+              <span className="text-[10px] text-slate-400 underline">Change</span>
+            </button>
+          )}
         </div>
       </div>
 

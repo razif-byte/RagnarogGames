@@ -14,6 +14,7 @@ import { CloudSyncModal } from './game/components/CloudSyncModal';
 import { AntiCheatAndPerfModal } from './game/components/AntiCheatAndPerfModal';
 import { CharacterCreationModal } from './game/components/CharacterCreationModal';
 import { DailyQuestsModal } from './game/components/DailyQuestsModal';
+import { AudioSettingsModal } from './game/components/AudioSettingsModal';
 
 import {
   INITIAL_PLAYER,
@@ -78,6 +79,7 @@ export default function App() {
     | 'cloud'
     | 'anticheat'
     | 'creator'
+    | 'audio'
   >(null);
 
   // Performance & Anti-cheat
@@ -394,6 +396,7 @@ export default function App() {
           selectedJob={player.job}
           onSelectJob={handleSelectJob}
           onStartGame={handleStartGame}
+          onOpenAudio={() => setActiveModal('audio')}
         />
       )}
 
@@ -416,6 +419,7 @@ export default function App() {
           onOpenCloudSync={() => setActiveModal('cloud')}
           onOpenAntiCheat={() => setActiveModal('anticheat')}
           onOpenCharacterCreator={() => setActiveModal('creator')}
+          onOpenAudio={() => setActiveModal('audio')}
           onEngageMonster={handleEngageMonster}
           onGatherNode={handleGatherNode}
           onMoveIntent={(x, z) => {
@@ -573,6 +577,12 @@ export default function App() {
         <AntiCheatAndPerfModal
           metrics={metrics}
           antiCheat={antiCheat}
+          onClose={() => setActiveModal(null)}
+        />
+      )}
+
+      {activeModal === 'audio' && (
+        <AudioSettingsModal
           onClose={() => setActiveModal(null)}
         />
       )}

@@ -23,6 +23,7 @@ interface GameHudProps {
   onOpenCloudSync: () => void;
   onOpenAntiCheat: () => void;
   onOpenCharacterCreator: () => void;
+  onOpenAudio: () => void;
   onEngageMonster: (monster: Monster) => void;
   onGatherNode: (node: GatheringNode) => void;
   onMoveIntent: (x: number, z: number) => void;
@@ -45,6 +46,7 @@ export const GameHud: React.FC<GameHudProps> = ({
   onOpenCloudSync,
   onOpenAntiCheat,
   onOpenCharacterCreator,
+  onOpenAudio,
   onEngageMonster,
   onGatherNode,
   onMoveIntent,
@@ -158,14 +160,27 @@ export const GameHud: React.FC<GameHudProps> = ({
         {/* Top-Right: Minimap & Quick Utilities */}
         <div className="pointer-events-auto flex flex-col items-end gap-2">
           <div className="flex items-center gap-1.5 bg-slate-950/90 border border-slate-800 rounded-xl p-1.5 shadow">
-            {/* Audio Toggle */}
+            {/* Audio Toggle & BGM Manager */}
             <button
               type="button"
               onClick={handleToggleSound}
               title={isMuted ? 'Unmute Sound' : 'Mute Sound'}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer"
             >
               {isMuted ? '🔇' : '🔊'}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                sound.playClick();
+                onOpenAudio();
+              }}
+              title="Configure Background Music (Upload MP3 / Volume)"
+              className="px-2 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-[10px] text-amber-300 font-bold flex items-center gap-1 cursor-pointer transition-colors"
+            >
+              <span>🎵</span>
+              <span className="hidden sm:inline">BGM</span>
             </button>
 
             {/* Performance & Anti-cheat status */}

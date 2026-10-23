@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "UserProfile": {
+      "collection": "users",
+      "fields": {
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "lastActive": { "type": "string" },
+        "characterId": { "type": "string" }
+      }
+    },
+    "CloudSave": {
+      "collection": "cloud_saves",
+      "fields": {
+        "userId": { "type": "string" },
+        "characterName": { "type": "string" },
+        "job": { "type": "string" },
+        "level": { "type": "number" },
+        "jobLevel": { "type": "number" },
+        "zeny": { "type": "number" },
+        "stats": { "type": "map" },
+        "inventory": { "type": "list" },
+        "equipment": { "type": "map" },
+        "customization": { "type": "map" },
+        "dailyQuests": { "type": "map" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "MarketListing": {
+      "collection": "market_listings",
+      "fields": {
+        "sellerId": { "type": "string" },
+        "sellerName": { "type": "string" },
+        "itemId": { "type": "string" },
+        "itemName": { "type": "string" },
+        "quantity": { "type": "number" },
+        "price": { "type": "number" },
+        "createdAt": { "type": "string" }
+      }
+    }
+  }
+}
